@@ -44,7 +44,8 @@ function BayesABC!(xArray,xRinvArray,xpRinvx,
             yCorr=x*(oldAlpha-α[j])+yCorr
         else
             if (oldAlpha!=0)
-                BLAS.axpy!(oldAlpha,x,yCorr)
+                #BLAS.axpy!(oldAlpha,x,yCorr)
+                yCorr=x*oldAlpha+yCorr
             end
             δ[j] = 0
             β[j] = randn()*sqrt(varEffects[j])
